@@ -1,0 +1,146 @@
+body {
+    margin: 50px;
+    padding: 0px;
+    background-color: lightblue;
+    
+    
+  }
+
+  div.header {
+    
+    width: 100%;
+
+    height: auto;
+    background-color: yellow;
+    font-family: cursive;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) { /* jos leveämpi kuin 800*/
+    div.header {
+
+      margin: 0px;
+      padding: 0px;
+      display: inline-block;
+      background-color: lightgreen;
+      height: 160px;
+      
+    }
+  }
+
+
+
+  div {
+    
+}
+
+
+div.sisalto_container {
+    width: 100%;
+    
+}
+
+div.menu_vasen{
+    width: 100px;
+    padding: 5px;
+    font-size: 20px;
+    
+    
+    
+    float: left;
+    
+
+}
+div.sisalto_oikea{
+    float: left;
+    margin-left: 15px;
+}
+
+
+    
+
+div.teksti{
+    padding: 5px;
+    font-size: 25px;
+    
+    
+
+
+}
+
+  
+div.kommentti_container{
+    padding: 5px;
+    max-width: 400px;
+    word-wrap: break-word;
+}
+
+@media screen and (min-width: 800px) { /* jos leveämpi kuin 800*/
+    div.kommentti_container{
+      padding: 5px;
+      max-width: 800px;
+      word-wrap: break-word;
+  }
+}
+div.kommentti_kentta{
+    padding: 5px;
+    
+
+}
+div.kommentointi_send{
+    background-color: brown;
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  div.footer {
+    
+    width: 100%;
+    float: left;
+
+    height: auto;
+    background-color: yellow;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) { /* jos leveämpi kuin 800*/
+    div.footer {
+      background-color: lightgreen;
+      
+      
+      
+    }
+  }
+
+  

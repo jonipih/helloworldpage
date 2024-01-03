@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SähköAutoilijat</title>
+    <link rel="icon" type="image/x-icon" href="../media/favi.jpg">
+    
+
+	<!-- Oma tyylisivu -->
+	<link rel="stylesheet" href="../styles/etusivu.css">
+</head>
+
+<body onload="paivitakommentit()">
+
+    <script>
+        {//käy läpi ihan sivun alhaalla olevan <p> elementin joka toimii sisältönä parille ekalle kommenteille
+        function paivitakommentit(){
+           
+            
+            pkommentoijat = JSON.parse(document.getElementById("kommentit_lista").innerHTML); //ei var,let tai const niin glopaali
+            
+
+            for (let i = 0; i < pkommentoijat.length; i++) {
+                let tekstipvm=pkommentoijat[i].aika;
+                const d = new Date(tekstipvm);
+                const pvm_aika=" "+d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear()+" "
+                let kommentti_123 = document.createElement("p");
+                let node = document.createTextNode(pvm_aika+" nimimerkki :"+pkommentoijat[i].nimimerkki+" kirjoitti:");
+                kommentti_123.appendChild(node);
+                let kommentti_234 = document.createElement("p");
+                let node2 = document.createTextNode(" "+pkommentoijat[i].kommentti_);
+                kommentti_234.appendChild(node2);
+                
+                let element = document.getElementById("demo");
+                element.appendChild(kommentti_123);
+                element.appendChild(kommentti_234);
+                let viiva = document.createElement("hr");
+                element.appendChild(viiva);
+                
+                
+            }
+
+        }
+    
+        function uusi_kommentti(){//lisää uuden kommentin
+            
+            let nimion=document.getElementById('kommentti_send').value;
+            let kuka=document.getElementById('fname').value;
+            let ajan=Date.now();
+            let jsonobjekti={"nimimerkki":kuka, "aika":ajan, "kommentti_":nimion}
+            pkommentoijat.push(jsonobjekti);
+            
+            document.getElementById("kommentit_lista").innerHTML=JSON.stringify(pkommentoijat);
+
+            kommentti_pituus=(pkommentoijat.length-1)
+            let tekstipvm=pkommentoijat[kommentti_pituus].aika;
+            const d = new Date(tekstipvm);
+            const pvm_aika=" "+d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear()+" "
+            let kommentti_123 = document.createElement("p");
+            let node = document.createTextNode(pvm_aika+" nimimerkki :"+pkommentoijat[kommentti_pituus].nimimerkki+" kirjoitti:");
+            kommentti_123.appendChild(node);
+            let kommentti_234 = document.createElement("p");
+            let node2 = document.createTextNode(" "+pkommentoijat[kommentti_pituus].kommentti_);
+            kommentti_234.appendChild(node2);
+                
+            let element = document.getElementById("demo");
+            element.appendChild(kommentti_123);
+            element.appendChild(kommentti_234);
+            let viiva = document.createElement("hr");
+            element.appendChild(viiva);
+            
+        }
+        
+    }
+    </script>
+    <!--otsikko-->
+    <div class="header"><h1>Seinäjoen Sähköautoilijat ry</h1>
+        </div>
+    <!--Sisalto-->
+    <div class="sisalto_container">
+        <!--menu-->
+        <div class="menu_vasen">
+            <h4>MENU</h4>
+            <p ><a href="../index.html">etusivu</a></p>
+            <p ><a href="historia.html">historia</a></p>
+            <p style="font-weight: bold;"><a href="sähköautoja.html">sähköautoja</a></p>
+            <p ><a href="yhteystiedot.html">yhteystiedot</a></p>
+        </div>
+        <div class="sisalto_oikea">
+            <!--teksti-->
+            <div  class="teksti">
+                <p >Thomas Edison and an electric car in 1913</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/EdisonElectricCar1913.jpg" alt="Thomas edison ja sähköauto" style="width: 70%;">
+            <hr><p >The General Motors EV1</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/EV1_%286%29.jpg/501px-EV1_%286%29.jpg" alt="GMn EV 1 sähköauto" style="width: 70%;">
+            <p></p>
+            
+            </div>
+            <!--kommentti-->
+            <div class="kommentti_container">
+                <div class="kommentti_kentta" id="demo"></div>
+                <div style="clear: both;" class="kommentointi_send"><p>nimimerkki:</p>
+                    <input type="text" id="fname" name="fname"><br>
+                    <p>KOMMENTTI</p>
+                    <textarea name="message" id="kommentti_send" rows="10" cols="100">kommentoi</textarea><br>
+                    <button type="button" onclick="uusi_kommentti()">Lähetä kommenttisi</button>
+                
+                </div>
+            </div>
+        </div>
+    <!--cler both nollaa floatin-->
+    <div style="clear: both;" ><p></p></div>
+    
+    <!--alku kommentit JSON muodossa-->
+    <div><p id="kommentit_lista" style="display: none;">[{"nimimerkki":"John", "aika":1104228115173, "kommentti_":"......."},{"nimimerkki":"anonyymi", "aika":1105228115173, "kommentti_":":D"}]</p></div>
+    </div>
+    <!--footer-->
+    <div class="footer"><h1>&#169 2023 seinäjoen sähköautoilijat ry</h1></div>
+	
+
+
+</body>
+</html>
